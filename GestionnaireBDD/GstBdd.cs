@@ -20,11 +20,7 @@ namespace GestionnaireBDD
 
         public List<Manifestation> GetAllManifestations()
         {
-            //public int IdManif { get; set; }
-            //public string NomManif { get; set; }
-            //public string DateDebutManif { get; set; }
-            //public string DateFinManif { get; set; }
-            //public Salle LaSalle { get; set; }
+            
 
             List<Manifestation> lesManifs = new List<Manifestation>();
             cmd = new MySqlCommand("SELECT idManif, nomManif, dateDebut, dateFin, numSalle, nomSalle, nbPlaces FROM manifestation INNER JOIN salle ON numSalle = idSalle", cnx); // requête sql pr récup tarif
@@ -55,18 +51,10 @@ namespace GestionnaireBDD
 
         public List<Place> GetAllPlacesByIdManifestation(int idManif,int idSalle)
         {
-            //private double prix;
-            //private char etat;
-            //public int IdPlace { get; set; }
-            //public char CodeTarif { get; set; }
-            //public bool Occupee { get; set; }
-
-            //public double Prix
             List<Place> lesPlaces = new List<Place>();
 
             cmd = new MySqlCommand("SELECT idPlace, t.idTarif, t.prix, o.libre FROM manifestation inner join occuper o on idManif = numManif inner join place p on o.numPlace = p.idPlace INNER JOIN tarif t ON idTarif = numTarif WHERE idManif = " + idManif + " AND p.numSalle = " + idSalle, cnx);
-            //select numPlace, numTarif, libre from manifestation inner join occuper on idManif = numManif 
-            //inner join place on numPlace = place.idPlace where idManif = 1 and place.numSalle = 2;
+
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
