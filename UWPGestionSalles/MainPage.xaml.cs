@@ -34,7 +34,7 @@ namespace UWPGestionSalles
         {
             this.InitializeComponent();
         }
-
+        
         private async void btnReserver_Click(object sender, RoutedEventArgs e)
         {
             if (lstManifs.SelectedItem == null)
